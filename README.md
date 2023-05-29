@@ -6,3 +6,5 @@ pip install sixsigmaspc
 
 See the test scripts for examples how to use.
 
+## ReadTheDocs
+more information can be found on https://sixsigmaspc.readthedocs.io/
