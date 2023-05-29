@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>ControlChart &#8212; Six Sigma SPC  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="ControlChartConstants" href="ControlChartConstants.html" />
+    <link rel="prev" title="Welcome to Six Sigma SPC’s documentation!" href="../../index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="controlchart">
+<h1>ControlChart<a class="headerlink" href="#controlchart" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ControlChart.ControlChart">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ControlChart.</span></span><span class="sig-name descname"><span class="pre">ControlChart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number_of_charts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ControlChart.ControlChart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Initialization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>number_of_charts</strong> – The number of charts.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ControlChart.ControlChart.append_rule">
+<span class="sig-name descname"><span class="pre">append_rule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Rule</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ControlChart.ControlChart.append_rule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append a rule.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rule</strong> – The rule.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ControlChart.ControlChart.data">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ControlChart.ControlChart.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>index</strong> – The index for the data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ControlChart.ControlChart.dateformat">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dateformat</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ControlChart.ControlChart.dateformat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the date format.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ControlChart.ControlChart.dates">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dates</span></span><a class="headerlink" href="#ControlChart.ControlChart.dates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the dates.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ControlChart.ControlChart.execute_rules">
+<span class="sig-name descname"><span class="pre">execute_rules</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ControlChart.ControlChart.execute_rules" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rules execution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> – The dataframe.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ControlChart.ControlChart.limits">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">limits</span></span><a class="headerlink" href="#ControlChart.ControlChart.limits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the limits indicator.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ControlChart.ControlChart.number_of_charts">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">number_of_charts</span></span><a class="headerlink" href="#ControlChart.ControlChart.number_of_charts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of charts.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ControlChart.ControlChart.plot">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ControlChart.ControlChart.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the chart(s).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ControlChart.ControlChart.split">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ControlChart.ControlChart.split" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split the chart.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stages</strong> – The stages.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ControlChart.ControlChart.stable">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ControlChart.ControlChart.stable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the stable indicator.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ControlChart.ControlChart.stages">
+<span class="sig-name descname"><span class="pre">stages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_stages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ControlChart.ControlChart.stages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the chart(s).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – values.</p></li>
+<li><p><strong>max_stages</strong> – the maximum possible of stages.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Six Sigma SPC</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ControlChart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ControlChart.ControlChart"><code class="docutils literal notranslate"><span class="pre">ControlChart</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ControlChartConstants.html">ControlChartConstants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MultiVariChart.html">MultiVariChart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProcessCapabilityChart.html">ProcessCapabilityChart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rule.html">Rule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rule01.html">Rule01</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rule02.html">Rule02</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rule03.html">Rule03</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rule04.html">Rule04</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rule05.html">Rule05</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rule06.html">Rule06</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rule07.html">Rule07</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rule08.html">Rule08</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XbarRControlChart.html">XbarRControlChart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XbarRControlChartConstants.html">XbarRControlChartConstants</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../../index.html" title="previous chapter">Welcome to Six Sigma SPC’s documentation!</a></li>
+      <li>Next: <a href="ControlChartConstants.html" title="next chapter">ControlChartConstants</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Junior Marte Garcia, Marcel van Velzen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../../_sources/source/api/ControlChart.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

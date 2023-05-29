@@ -1,0 +1,11 @@
+abc
+datetime
+kneed
+matplotlib.dates
+matplotlib.pyplot
+numpy
+pandas
+ruptures
+scipy.stats
+statistics
+warnings
