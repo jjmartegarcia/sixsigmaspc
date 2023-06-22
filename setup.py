@@ -15,7 +15,7 @@ with open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
 # This call to setup() does all the work
 setup(
     name="sixsigmaspc",
-    version="1.0.0",
+    version="1.0.1",
     description="Statistical Process Control library",
     long_description=long_description,
     long_description_content_type="text/markdown",

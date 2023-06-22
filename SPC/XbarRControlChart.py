@@ -142,12 +142,18 @@ class XbarRControlChart(ControlChart):
 
         # Check numerical or datetime for the x-axis.
         if (len(super().dates) == 0):
-            plt.xticks(np.arange(len(self.value_X)))
+            #TMP
+            #plt.xticks(np.arange(len(self.value_X)))
+            pass
         else:
             plt.xticks(rotation=45, ha='right')
 
         # Add a legend.
         plt.legend(loc='upper right')
+
+        #TMP
+        plt.xlabel('dagen')
+        plt.ylabel('beschikbare Avenio''s')
 
         # The 2nd vertical plot.
         plt.subplot(2,1,2)
@@ -182,7 +188,7 @@ class XbarRControlChart(ControlChart):
         plt.title("R Chart")
 
         # Set numerical for the x-axis.
-        plt.xticks(np.arange(len(self.value_X)))
+        #plt.xticks(np.arange(len(self.value_X)))
 
         # Add a legend.
         plt.legend(loc='upper right')

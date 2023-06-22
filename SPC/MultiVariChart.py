@@ -35,6 +35,5 @@ class MultiVariChart():
             plt.vlines(x_values_X[i], self._data[i].min(), self._data[i].max(), color='lightgrey', linewidth=4)
 
         plt.plot(x_values_X, self.value_X, marker="o", color="blue", label="")
-        plt.xticks(np.arange(len(self.value_X)))
         plt.title("Multi-Vari Chart")
         plt.show()
