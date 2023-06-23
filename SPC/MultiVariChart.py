@@ -4,15 +4,24 @@ The Multi-vari chart.
 
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+from datetime import datetime
 
 class MultiVariChart():
-    def __init__(self, data:list):
+    _dateformat = "%Y-%m-%d" # The date format.
+    _dates = [] # The dates.
+
+    def __init__(self, data:list, xlabel:str="", ylabel:str=""):
         """ Initialization.
 
             :param data: The data.
+            :param xlabel: x-as label.
+            :param ylabel: y-as label.
         """
         # Remember the parameters.
         self._data=data
+        self._xlabel = xlabel
+        self._ylabel = ylabel
 
         # The number of samples.
         self.number_of_sample = len(data)
@@ -28,7 +37,14 @@ class MultiVariChart():
         """ Create the plot.
         """
         plt.figure(figsize=(15,10))
-        x_values_X = list(range(0, len(self.value_X)))
+
+        # The x-axis can be numeric or datetime.
+        if (len(self._dates) == 0):
+            x_values_X = list(range(0, len(self.value_X)))
+        else:
+            format=self._dateformat
+            x_values_X = [datetime.strptime(d, format).date() for d in self._dates]
+            plt.gca().xaxis.set_major_formatter(mdates.DateFormatter(self._dateformat))
 
         # Plot the vertical lines with min/max.
         for i in range(self.number_of_sample):
@@ -36,4 +52,39 @@ class MultiVariChart():
 
         plt.plot(x_values_X, self.value_X, marker="o", color="blue", label="")
         plt.title("Multi-Vari Chart")
+
+        # Set the x-label.
+        plt.xlabel( self._xlabel)
+
+        # Set the y-label.
+        plt.ylabel( self._ylabel)
+
         plt.show()
+
+    @property
+    def dates(self):
+        """ Returns the dates.
+        """
+        return self._dates
+	
+    @dates.setter
+    def dates(self, dates:list):
+        """ Set the dates for the x-axis.
+
+            :param dates: The dates.
+        """
+        self._dates = dates
+
+    @property
+    def dateformat(self) -> str:
+        """ Returns the date format.
+        """
+        return self._dateformat
+	
+    @dateformat.setter
+    def dateformat(self, dateformat:str):
+        """ Sets the date format.
+
+            :param dateformat: The date format.
+        """
+        self._dateformat = dateformat
