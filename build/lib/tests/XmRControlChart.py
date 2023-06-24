@@ -24,14 +24,14 @@ if __name__ == '__main__':
     chart = XmRControlChart(data=data, xlabel="x-label", ylabel_top="y-label-top", ylabel_bottom="y-label-bottom")
     normally_distributed=chart.normally_distributed(data=chart.value_X, significance_level=0.05)
     print("normally_distributed={0}".format(normally_distributed))
-    chart.dates = dates
-    chart.dateformat = "%d-%m-%y"
+    #chart.dates = dates
+    #chart.dateformat = "%d-%m-%y"
     #stages=chart.stages(data=chart.value_X, max_stages=4)
     #if stages is not None:
     #    chart.split(stages)
     #chart.split([4, 7])
     #chart.limits=True
-    chart.append_rules([Rule01()])
+    chart.append_rules([Rule01(), Rule02(), Rule03(), Rule04(), Rule05(), Rule06(), Rule07(), Rule08()])
     chart.plot()
 
     df1 = chart.data(0)

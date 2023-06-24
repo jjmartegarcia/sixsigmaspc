@@ -31,8 +31,8 @@ if __name__ == '__main__':
     chart = ImRControlChart(data=data, xlabel="x-label", ylabel_top="y-label-top", ylabel_bottom="y-label-bottom")
     normally_distributed=chart.normally_distributed(data=chart.value_I, significance_level=0.05)
     print("normally_distributed={0}".format(normally_distributed))
-    chart.dates = dates
-    chart.dateformat = "%d-%m-%y"
+    #chart.dates = dates
+    #chart.dateformat = "%d-%m-%y"
     #stages=chart.stages(data=chart.value_I, max_stages=2)
     #if stages is not None:
     #    chart.split(stages)

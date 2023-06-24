@@ -136,6 +136,9 @@ class XmRControlChart(ControlChart):
         plt.plot(x_values_X, self.lcl_X, color="r", label="LCL")
         plt.title("X Chart")
 
+        # Set the lower and upper limits for the x-axis.
+        plt.xlim(min(x_values_X), max(x_values_X))
+
         # Add a legend.
         plt.legend(loc='upper right')
 
@@ -178,6 +181,9 @@ class XmRControlChart(ControlChart):
 
         plt.plot(x_values_mR, self.lcl_mR, color="r", label="LCL")
         plt.title("mR Chart")
+
+        # Set the lower and upper limits for the x-axis.
+        plt.xlim(min(x_values_X), max(x_values_X))
 
         # Add a legend.
         plt.legend(loc='upper right')
