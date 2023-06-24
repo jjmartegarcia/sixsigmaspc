@@ -24,16 +24,22 @@ class XbarSControlChart(ControlChart):
     _B3 : float # The Control Chart B3 constant.
     _B4 : float # The Control Chart B4 constant.
 
-    def __init__(self, data:list):
+    def __init__(self, data:list, xlabel:str="", ylabel_top:str="", ylabel_bottom:str=""):
         """ Initialization.
 
             :param data: values.
+            :param xlabel: x-as label.
+            :param ylabel_top: top y-as label.
+            :param ylabel_bottom: bottom y-as label.
         """
         # Initialization of the base class.
         super().__init__(2) # X bar chart and S chart.
 
-        # Remember the data.
+        # Remember the parameters.
         self._data = data
+        self._xlabel = xlabel
+        self._ylabel_top = ylabel_top
+        self._ylabel_bottom = ylabel_bottom
 
         # Initialization of the constants.
         constants = XbarSControlChartConstants()
@@ -139,20 +145,22 @@ class XbarSControlChart(ControlChart):
         plt.plot(x_values_X, self.lcl_Xbar, color="r", label="LCL")
         plt.title("X bar Chart")
 
-        # Check numerical or datetime for the x-axis.
-        if (len(super().dates) == 0):
-            plt.xticks(np.arange(len(self.value_X)))
-        else:
-            plt.xticks(rotation=45, ha='right')
-
         # Add a legend.
         plt.legend(loc='upper right')
+
+        # Set the y-label.
+        plt.ylabel( self._ylabel_top)
 
         # The 2nd vertical plot.
         plt.subplot(2,1,2)
 
-        # The x-axis is numeric.
-        x_values_S = list(range(0, len(self.value_S)))
+        # The x-axis can be numeric or datetime.
+        if (len(super().dates) == 0):
+            x_values_S = list(range(0, len(self.value_S)))
+        else:
+            format=super().dateformat
+            x_values_S = [datetime.strptime(d, format).date() for d in super().dates]
+            plt.gca().xaxis.set_major_formatter(mdates.DateFormatter(super().dateformat))
 
         # S chart.
         plt.plot(x_values_S, self.value_S, marker="o", color="k", label="S")
@@ -180,11 +188,14 @@ class XbarSControlChart(ControlChart):
         plt.plot(x_values_S, self.lcl_S, color="r", label="LCL")
         plt.title("S Chart")
 
-        # Set numerical for the x-axis.
-        plt.xticks(np.arange(len(self.value_X)))
-
         # Add a legend.
         plt.legend(loc='upper right')
+
+        # Set the y-label.
+        plt.ylabel(self._ylabel_bottom)
+
+        # Set the x-label.
+        plt.xlabel( self._xlabel)
 
         # Show the plot.
         plt.show()
