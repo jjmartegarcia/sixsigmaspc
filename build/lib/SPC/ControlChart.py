@@ -110,6 +110,14 @@ class ControlChart(ABC):
         # Append the rule.
         self._rules.append(rule)
 
+    def append_rules(self, rules : list[Rule]):
+        """ Append the rules.
+
+            :param rules: The rules.
+        """
+        # Set the rules.
+        self._rules = rules
+
     def execute_rules(self, df: pd.DataFrame):
         """ Rules execution.
 

@@ -1,21 +1,11 @@
 Metadata-Version: 2.1
 Name: sixsigmaspc
-Version: 1.0.0
+Version: 1.0.1
 Summary: Statistical Process Control library
 Home-page: https://sixsigmaspc.readthedocs.io/
 Author: Junior Marte Garcia, Marcel van Velzen
 Author-email: 
 License: MIT
-Description: # Welcome
-        Six Sigma SPC is a library for Statistical Process Control.
-        
-        ## Installation
-        pip install sixsigmaspc
-        
-        See the test scripts for examples how to use.
-        
-        
-Platform: UNKNOWN
 Classifier: Intended Audience :: Developers
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Programming Language :: Python
@@ -26,3 +16,15 @@ Classifier: Programming Language :: Python :: 3.8
 Classifier: Programming Language :: Python :: 3.9
 Classifier: Operating System :: OS Independent
 Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Welcome
+Six Sigma SPC is a library for Statistical Process Control.
+
+## Installation
+pip install sixsigmaspc
+
+See the test scripts for examples how to use.
+
+## ReadTheDocs
+more information can be found on https://sixsigmaspc.readthedocs.io/
