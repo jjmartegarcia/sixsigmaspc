@@ -27,29 +27,22 @@ from SPC import ImRControlChart
 
 if __name__ == '__main__':
     data = np.array([82, 84, 75, 79, 84, 81, 81, 82, 80, 78, 74])
-    #dates = ['21-12-2021', '22-12-2021', '23-12-2021', '24-12-2021', '25-12-2021', '26-12-2021', '27-12-2021', '28-12-2021', '29-12-2021','30-12-2021', '31-12-2021']
-    chart = ImRControlChart(data=data)
+    dates = ['21-12-21', '22-12-21', '23-12-21', '24-12-21', '25-12-21', '26-12-21', '27-12-21', '28-12-21', '29-12-21','30-12-21', '31-12-21']
+    chart = ImRControlChart(data=data, xlabel="x-label", ylabel_top="y-label-top", ylabel_bottom="y-label-bottom")
     normally_distributed=chart.normally_distributed(data=chart.value_I, significance_level=0.05)
     print("normally_distributed={0}".format(normally_distributed))
     #chart.dates = dates
-    #chart.dateformat = "%d-%m-%Y"
+    #chart.dateformat = "%d-%m-%y"
     #stages=chart.stages(data=chart.value_I, max_stages=2)
     #if stages is not None:
     #    chart.split(stages)
     #chart.split([4, 7])
     #chart.limits=True
-    chart.append_rule(Rule01()) # Beyond limits: one or more points are beyond the control limits.
-    chart.append_rule(Rule02()) # Zone A: 2 out of 3 consecutive points in Zone A or beyond.
-    chart.append_rule(Rule03()) # Zone B: 4 out of 5 consecutive points in Zone B or beyond.
-    chart.append_rule(Rule04()) # Zone C: 7 or more consecutive points on one side of the average (in Zone C or beyond).
-    chart.append_rule(Rule05()) # Trend: 7 consecutive points trending up or trending down.
-    chart.append_rule(Rule06()) # Mixture: 8 consecutive points with no points in Zone C.
-    chart.append_rule(Rule07()) # Stratification: 15 consecutive points in Zone C.
-    chart.append_rule(Rule08()) # Over-control: 14 consecutive points alternating up and down.
+    chart.append_rules([Rule01(), Rule02(), Rule03(), Rule04(), Rule05(), Rule06(), Rule07(), Rule08()])
     chart.plot()
 
     df1 = chart.data(0)
-    print(df1[["CL", "UCL", "LCL"]])
+    #print(df1[["CL", "UCL", "LCL"]])
     df2 = chart.data(1)
-    print(df2[["CL", "UCL", "LCL"]])
-    print("stable={0}".format(chart.stable()))
+    #print(df2[["CL", "UCL", "LCL"]])
+    #print("stable={0}".format(chart.stable()))

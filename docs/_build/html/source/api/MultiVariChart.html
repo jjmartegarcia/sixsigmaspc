@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>MultiVariChart &#8212; Six Sigma SPC  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
@@ -14,11 +14,10 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="ProcessCapabilityChart" href="ProcessCapabilityChart.html" />
-    <link rel="prev" title="ControlChartConstants" href="ControlChartConstants.html" />
+    <link rel="next" title="NPControlChart" href="NPControlChart.html" />
+    <link rel="prev" title="ImRControlChart" href="ImRControlChart.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -39,14 +38,30 @@
 <h1>MultiVariChart<a class="headerlink" href="#multivarichart" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="MultiVariChart.MultiVariChart">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">MultiVariChart.</span></span><span class="sig-name descname"><span class="pre">MultiVariChart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MultiVariChart.MultiVariChart" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">MultiVariChart.</span></span><span class="sig-name descname"><span class="pre">MultiVariChart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MultiVariChart.MultiVariChart" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> – The data.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – The data.</p></li>
+<li><p><strong>xlabel</strong> – x-as label.</p></li>
+<li><p><strong>ylabel</strong> – y-as label.</p></li>
+</ul>
 </dd>
 </dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="MultiVariChart.MultiVariChart.dateformat">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dateformat</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#MultiVariChart.MultiVariChart.dateformat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the date format.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="MultiVariChart.MultiVariChart.dates">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dates</span></span><a class="headerlink" href="#MultiVariChart.MultiVariChart.dates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the dates.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="MultiVariChart.MultiVariChart.plot">
 <span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#MultiVariChart.MultiVariChart.plot" title="Permalink to this definition">¶</a></dt>
@@ -76,12 +91,13 @@
 <h3>Navigation</h3>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="CControlChart.html">CControlChart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ControlChart.html">ControlChart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ControlChartConstants.html">ControlChartConstants</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">MultiVariChart</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#MultiVariChart.MultiVariChart"><code class="docutils literal notranslate"><span class="pre">MultiVariChart</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="ImRControlChart.html">ImRControlChart</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MultiVariChart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NPControlChart.html">NPControlChart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PControlChart.html">PControlChart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ProcessCapabilityChart.html">ProcessCapabilityChart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Rule.html">Rule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Rule01.html">Rule01</a></li>
@@ -92,16 +108,20 @@
 <li class="toctree-l1"><a class="reference internal" href="Rule06.html">Rule06</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Rule07.html">Rule07</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Rule08.html">Rule08</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UControlChart.html">UControlChart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="XbarRControlChart.html">XbarRControlChart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="XbarRControlChartConstants.html">XbarRControlChartConstants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XbarSControlChart.html">XbarSControlChart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XbarSControlChartConstants.html">XbarSControlChartConstants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XmRControlChart.html">XmRControlChart</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="ControlChartConstants.html" title="previous chapter">ControlChartConstants</a></li>
-      <li>Next: <a href="ProcessCapabilityChart.html" title="next chapter">ProcessCapabilityChart</a></li>
+      <li>Previous: <a href="ImRControlChart.html" title="previous chapter">ImRControlChart</a></li>
+      <li>Next: <a href="NPControlChart.html" title="next chapter">NPControlChart</a></li>
   </ul></li>
 </ul>
 </div>
@@ -131,8 +151,8 @@
       &copy;2023, Junior Marte Garcia, Marcel van Velzen.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
       <a href="../../_sources/source/api/MultiVariChart.rst.txt"

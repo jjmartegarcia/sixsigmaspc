@@ -13,17 +13,21 @@ from datetime import datetime
 from SPC import ControlChart
 
 class CControlChart(ControlChart):
-    def __init__(self, c:list, n:list):
+    def __init__(self, c:list, n:list, xlabel:str="", ylabel:str=""):
         """ Initialization.
 
             :param c: number of defects in the samples.
             :param n: sample sizes.
+            :param xlabel: x-as label.
+            :param ylabel: y-as label.
         """
         # Initialization of the base class.
         super().__init__(1) # C chart.
 
-        # The number of defects.
+        # Remember the parameters.
         self.number_of_defects = len(c)
+        self._xlabel = xlabel
+        self._ylabel = ylabel
 
         # Remember the number of defects.
         self.c = c
@@ -54,6 +58,8 @@ class CControlChart(ControlChart):
     def plot(self):
         """ Create the plot.
         """
+        plt.figure(figsize=(15,5))
+
         # The x-axis can be numeric or datetime.
         if (len(super().dates) == 0):
             x_values_C = list(range(0, self.number_of_defects))
@@ -63,7 +69,6 @@ class CControlChart(ControlChart):
             plt.gca().xaxis.set_major_formatter(mdates.DateFormatter(super().dateformat))
 
         # C chart.
-        plt.figure(figsize=(15,5))
         plt.plot(x_values_C, self.c, marker="o",color="k",label="c")
         plt.plot(x_values_C, self.ucl_c,color="r",label="UCL")
 
@@ -89,14 +94,14 @@ class CControlChart(ControlChart):
         plt.plot(x_values_C, self.lcl_c,color="r",label="LCL")
         plt.title("C Control Chart")
 
-        # Check numerical or datetime for the x-axis.
-        if (len(super().dates) == 0):
-            plt.xticks(np.arange(self.number_of_defects))
-        else:
-            plt.xticks(rotation=45, ha='right')
-        
         # Add a legend.
         plt.legend(loc='upper right')
+
+        # Set the x-label.
+        plt.xlabel( self._xlabel)
+
+        # Set the y-label.
+        plt.ylabel( self._ylabel)
 
         plt.show()
 

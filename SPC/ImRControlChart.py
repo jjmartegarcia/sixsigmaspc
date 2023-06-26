@@ -143,6 +143,9 @@ class ImRControlChart(ControlChart):
         plt.plot(x_values_I, self.lcl_I, color="r", label="LCL")
         plt.title("I Chart")
 
+        # Set the lower and upper limits for the x-axis.
+        plt.xlim(min(x_values_I), max(x_values_I))
+
         # Add a legend.
         plt.legend(loc='upper right')
 
@@ -185,6 +188,9 @@ class ImRControlChart(ControlChart):
 
         plt.plot(x_values_mR, self.lcl_mR, color="r", label="LCL")
         plt.title("mR Chart")
+
+        # Set the lower and upper limits for the x-axis.
+        plt.xlim(min(x_values_I), max(x_values_I))
 
         # Add a legend.
         plt.legend(loc='upper right')

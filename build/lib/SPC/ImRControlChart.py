@@ -27,16 +27,22 @@ class ImRControlChart(ControlChart):
     _D3 : float # The Control Chart D3 constant.
     _D4 : float # The Control Chart D4 constant.
 
-    def __init__(self, data:list):
+    def __init__(self, data:list, xlabel:str="", ylabel_top:str="", ylabel_bottom:str=""):
         """ Initialization.
 
             :param data: values.
+            :param xlabel: x-as label.
+            :param ylabel_top: top y-as label.
+            :param ylabel_bottom: bottom y-as label.
         """
         # Initialization of the base class.
         super().__init__(2) # X chart and mR chart.
 
-        # Remember the data.
+        # Remember the parameters.
         self._data = data
+        self._xlabel = xlabel
+        self._ylabel_top = ylabel_top
+        self._ylabel_bottom = ylabel_bottom
 
         # Remember the Control chart constants size=2 (comparing the current state with previous state).
         self._E2 = 2.66
@@ -105,7 +111,7 @@ class ImRControlChart(ControlChart):
 
         # The x-axis can be numeric or datetime.
         if (len(super().dates) == 0):
-            x_values_I = list(range(1, len(self.value_I)+1))
+            x_values_I = list(range(0, len(self.value_I)))
         else:
             format=super().dateformat
             x_values_I = [datetime.strptime(d, format).date() for d in super().dates]
@@ -137,20 +143,25 @@ class ImRControlChart(ControlChart):
         plt.plot(x_values_I, self.lcl_I, color="r", label="LCL")
         plt.title("I Chart")
 
-        # Check numerical or datetime for the x-axis.
-        if (len(super().dates) == 0):
-            plt.xticks(np.arange(len(self.value_I)))
-        else:
-            plt.xticks(rotation=45, ha='right')
+        # Set the lower and upper limits for the x-axis.
+        plt.xlim(min(x_values_I), max(x_values_I))
 
         # Add a legend.
         plt.legend(loc='upper right')
 
+        # Set the y-label.
+        plt.ylabel( self._ylabel_top)
+
         # The 2nd vertical plot.
         plt.subplot(2,1,2)
 
-        # The x-axis is numeric.
-        x_values_mR = list(range(1, len(self.value_I)))
+        # The x-axis can be numeric or datetime.
+        if (len(super().dates) == 0):
+            x_values_mR = list(range(1, len(self.value_I)))
+        else:
+            format=super().dateformat
+            x_values_mR = [datetime.strptime(d, format).date() for d in super().dates][1:]
+            plt.gca().xaxis.set_major_formatter(mdates.DateFormatter(super().dateformat))
 
         # mR chart.
         plt.plot(x_values_mR, self.value_mR, marker="o", color="k", label="R")
@@ -178,11 +189,17 @@ class ImRControlChart(ControlChart):
         plt.plot(x_values_mR, self.lcl_mR, color="r", label="LCL")
         plt.title("mR Chart")
 
-        # Set numerical for the x-axis.
-        plt.xticks(np.arange(len(self.value_I)))
+        # Set the lower and upper limits for the x-axis.
+        plt.xlim(min(x_values_I), max(x_values_I))
 
         # Add a legend.
         plt.legend(loc='upper right')
+
+        # Set the y-label.
+        plt.ylabel(self._ylabel_bottom)
+
+        # Set the x-label.
+        plt.xlabel( self._xlabel)
 
         # Show the plot.
         plt.show()
