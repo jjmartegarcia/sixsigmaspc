@@ -1,0 +1,4 @@
+build/
+dist/
+sixsigmaspc.egg-info/
+SPC.egg-info/
