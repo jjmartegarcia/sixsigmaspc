@@ -1,9 +1,11 @@
 # This will allow shorter imports.
+from SPC.Rule import Rule
 from SPC.ControlChart import ControlChart
 from SPC.ControlChartConstants import ControlChartConstants
+from SPC.XbarRControlChartConstants import XbarRControlChartConstants
+from SPC.XbarSControlChartConstants import XbarSControlChartConstants
 from SPC.MultiVariChart import MultiVariChart
 from SPC.ProcessCapabilityChart import ProcessCapabilityChart
-from SPC.Rule import Rule
 from SPC.Rule01 import Rule01
 from SPC.Rule02 import Rule02
 from SPC.Rule03 import Rule03
@@ -12,9 +14,7 @@ from SPC.Rule05 import Rule05
 from SPC.Rule06 import Rule06
 from SPC.Rule07 import Rule07
 from SPC.Rule08 import Rule08
-from SPC.XbarRControlChartConstants import XbarRControlChartConstants
 from SPC.XbarRControlChart import XbarRControlChart
-from SPC.XbarSControlChartConstants import XbarSControlChartConstants
 from SPC.XbarSControlChart import XbarSControlChart
 from SPC.XmRControlChart import XmRControlChart
 from SPC.ImRControlChart import ImRControlChart
