@@ -2,3 +2,5 @@ build/
 dist/
 sixsigmaspc.egg-info/
 SPC.egg-info/
+SPC/__pycache__
+tests/__pycache__
