@@ -3,7 +3,7 @@ import sys, os
 extensions = ['sphinx.ext.autodoc']
 
 project = 'Six Sigma SPC'
-copyright = '2023, Junior Marte Garcia, Marcel van Velzen'
+copyright = '2023'
 author = 'Junior Marte Garcia, Marcel van Velzen'
 
 sys.path.insert(0, os.path.abspath('../'))
