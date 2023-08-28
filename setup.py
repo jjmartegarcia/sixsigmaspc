@@ -15,7 +15,7 @@ with open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
 # This call to setup() does all the work
 setup(
     name="sixsigmaspc",
-    version="1.0.3",
+    version="1.0.4",
     description="Statistical Process Control library",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -36,5 +36,5 @@ setup(
     ],
     packages=["SPC","tests"],
     include_package_data=True,
-    install_requires=["python-abc", "datetime", "kneed", "matplotlib", "numpy", "pandas", "ruptures", "scipy", "statistics"]
+    install_requires=["python-abc", "datetime", "kneed", "matplotlib", "numpy", "pandas", "ruptures", "scipy", "statistics", "statsmodels"]
 )

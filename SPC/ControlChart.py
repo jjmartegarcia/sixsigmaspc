@@ -4,6 +4,7 @@ The abstract class for a control chart.
 
 import pandas as pd
 import ruptures as rpt
+import statsmodels.api as sm
 import warnings
 from SPC import Rule
 from abc import ABC, abstractmethod
@@ -169,6 +170,25 @@ class ControlChart(ABC):
             stat,p = shapiro(data)
 
         if p > significance_level:
+            return True
+        else:
+            return False
+
+    def _auto_correlated(self, data:list, delay:int, threshold:float):
+        """ Check if the data has a correlation with itself for a specific delay.
+            Returns true when the data is correlated with itself.
+            Returns false when the data is not correlated with itself.
+
+            :param data: values.
+            :param delay: delay.
+            :param threshold: correlation threshold.
+        """
+        lags = range(delay)
+
+        # Calculate auto-correlation.
+        acorr = sm.tsa.acf(data, nlags = len(lags))
+
+        if abs(acorr[delay]) >= threshold:
             return True
         else:
             return False
