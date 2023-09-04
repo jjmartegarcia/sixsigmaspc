@@ -23,3 +23,4 @@ from SPC.UControlChart import UControlChart
 from SPC.CControlChart import CControlChart
 from SPC.PControlChart import PControlChart
 from SPC.NPControlChart import NPControlChart
+__version__ = "1.0.7"
