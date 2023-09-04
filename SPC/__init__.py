@@ -14,6 +14,7 @@ from SPC.Rule05 import Rule05
 from SPC.Rule06 import Rule06
 from SPC.Rule07 import Rule07
 from SPC.Rule08 import Rule08
+from SPC.XbarmRControlChart import XbarmRControlChart
 from SPC.XbarRControlChart import XbarRControlChart
 from SPC.XbarSControlChart import XbarSControlChart
 from SPC.XmRControlChart import XmRControlChart
