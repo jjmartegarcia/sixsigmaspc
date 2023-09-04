@@ -46,7 +46,7 @@ if __name__ == '__main__':
     #    chart.split(stages)
     #chart.split([4, 7])
     #chart.limits=True
-    #chart.append_rules([Rule01(), Rule02(), Rule03(), Rule04(), Rule05(), Rule06(), Rule07(), Rule08()])
+    chart.append_rules([Rule01(), Rule02(), Rule03(), Rule04(), Rule05(), Rule06(), Rule07(), Rule08()])
     chart.plot()
 
     #df1 = chart.data(0)

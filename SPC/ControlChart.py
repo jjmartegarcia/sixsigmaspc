@@ -11,6 +11,7 @@ from abc import ABC, abstractmethod
 from kneed import KneeLocator
 from scipy.stats import jarque_bera
 from scipy.stats import shapiro
+from typing import List
 warnings.filterwarnings("ignore")
 
 class ControlChart(ABC):
@@ -111,7 +112,7 @@ class ControlChart(ABC):
         # Append the rule.
         self._rules.append(rule)
 
-    def append_rules(self, rules : list[Rule]):
+    def append_rules(self, rules : List[Rule]):
         """ Append the rules.
 
             :param rules: The rules.
