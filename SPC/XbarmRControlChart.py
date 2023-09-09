@@ -71,22 +71,22 @@ class XbarmRControlChart(ControlChart):
             self._value_mR[i]=abs(self._range[i+1] - self._range[i])
 
         # Initialize the arrays of X bar (MR method).
-        self.cl_Xmr = np.zeros(((self.number_of_sample -1), 1))
-        self.ucl_Xmr = np.zeros(((self.number_of_sample -1), 1))
-        self.lcl_Xmr = np.zeros(((self.number_of_sample -1), 1))
-        self.two_sigma_plus_Xmr = np.zeros(((self.number_of_sample -1), 1))
-        self.one_sigma_plus_Xmr = np.zeros(((self.number_of_sample -1), 1))
-        self.two_sigma_min_Xmr = np.zeros(((self.number_of_sample) -1, 1))
-        self.one_sigma_min_Xmr = np.zeros(((self.number_of_sample -1), 1))
+        self.cl_Xmr = np.zeros(((self.number_of_sample), 1))
+        self.ucl_Xmr = np.zeros(((self.number_of_sample), 1))
+        self.lcl_Xmr = np.zeros(((self.number_of_sample), 1))
+        self.two_sigma_plus_Xmr = np.zeros(((self.number_of_sample), 1))
+        self.one_sigma_plus_Xmr = np.zeros(((self.number_of_sample), 1))
+        self.two_sigma_min_Xmr = np.zeros(((self.number_of_sample), 1))
+        self.one_sigma_min_Xmr = np.zeros(((self.number_of_sample), 1))
 
         # Initialize the arrays of R (MR method).
-        self.cl_Rmr = np.zeros(((self.number_of_sample -1), 1))
-        self.ucl_Rmr = np.zeros(((self.number_of_sample -1), 1))
-        self.lcl_Rmr = np.zeros(((self.number_of_sample -1), 1))
-        self.two_sigma_plus_Rmr = np.zeros(((self.number_of_sample -1), 1))
-        self.one_sigma_plus_Rmr = np.zeros(((self.number_of_sample -1), 1))
-        self.two_sigma_min_Rmr = np.zeros(((self.number_of_sample -1), 1))
-        self.one_sigma_min_Rmr = np.zeros(((self.number_of_sample -1), 1))
+        self.cl_Rmr = np.zeros(((self.number_of_sample), 1))
+        self.ucl_Rmr = np.zeros(((self.number_of_sample), 1))
+        self.lcl_Rmr = np.zeros(((self.number_of_sample), 1))
+        self.two_sigma_plus_Rmr = np.zeros(((self.number_of_sample), 1))
+        self.one_sigma_plus_Rmr = np.zeros(((self.number_of_sample), 1))
+        self.two_sigma_min_Rmr = np.zeros(((self.number_of_sample), 1))
+        self.one_sigma_min_Rmr = np.zeros(((self.number_of_sample), 1))
 
         # Calculate the UCL, CL, LCL of X bar (MR method).
         self.cl_Xmr[:] = self._sample_average.mean()
@@ -120,22 +120,24 @@ class XbarmRControlChart(ControlChart):
 
         # The x-axis can be numeric or datetime.
         if (len(super().dates) == 0):
-            x_values_X = list(range(0, len(self._value_mR_average)))
+            x_values_X = list(range(0, len(self._sample_average)))
         else:
             format=super().dateformat
-            x_values_X = [datetime.strptime(d, format).date() for d in super().dates][1:]
+            x_values_X = [datetime.strptime(d, format).date() for d in super().dates]
             plt.gca().xaxis.set_major_formatter(mdates.DateFormatter(super().dateformat))
 
-        # X chart.
-        plt.plot(x_values_X, self._value_mR_average, marker="o", color="k", label="X")
-        plt.plot(x_values_X, self.ucl_Xmr, color="r", label="UCL")
+        # X bar chart.
+        plt.plot(x_values_X, self._sample_average, marker="o", color="k", label="X")
 
         # Retrieve the data.
         df = self.data(0)
 
         # Plot the signals.
         for i in np.where(df["SIGNAL"])[0]:
-            plt.plot(x_values_X[i], self._value_mR_average[i], marker="s", color="r")
+            plt.plot(x_values_X[i], self._sample_average[i], marker="s", color="r")
+
+        # The control limits.
+        plt.plot(x_values_X, self.ucl_Xmr, color="r", label="UCL")
 
         # The limits indicator for +2s, +1s.
         if super().limits:
@@ -149,7 +151,7 @@ class XbarmRControlChart(ControlChart):
             plt.plot(x_values_X, self.one_sigma_min_Xmr, color="r", linestyle='dashed', label="-1s")
             plt.plot(x_values_X, self.two_sigma_min_Xmr, color="r", linestyle='dashed', label="-2s")
 
-        plt.plot(x_values_X, self.lcl_Xmr, color="r", label="LCL")
+        # plt.plot(x_values_X, self.lcl_Xmr, color="r", label="LCL")
         plt.title("X (MR) Chart")
 
         # Set the lower and upper limits for the x-axis.
@@ -166,22 +168,24 @@ class XbarmRControlChart(ControlChart):
 
         # The x-axis can be numeric or datetime.
         if (len(super().dates) == 0):
-            x_values_mR = list(range(0, len(self._value_mR)))
+            x_values_mR = list(range(0, len(self._range)))
         else:
             format=super().dateformat
-            x_values_mR = [datetime.strptime(d, format).date() for d in super().dates][1:]
+            x_values_mR = [datetime.strptime(d, format).date() for d in super().dates]
             plt.gca().xaxis.set_major_formatter(mdates.DateFormatter(super().dateformat))
 
         # R (MR method) chart.
-        plt.plot(x_values_mR, self._value_mR, marker="o", color="k", label="R")
-        plt.plot(x_values_mR, self.ucl_Rmr, color="r", label="UCL")
+        plt.plot(x_values_mR, self._range, marker="o", color="k", label="R")
 
         # Retrieve the data.
         df = self.data(1)
 
         # Plot the signals.
         for i in np.where(df["SIGNAL"])[0]:
-            plt.plot(x_values_mR[i], self._value_mR[i], marker="s", color="r")
+            plt.plot(x_values_mR[i], self._range[i], marker="s", color="r")
+
+        # The control limits.
+        plt.plot(x_values_mR, self.ucl_Rmr, color="r", label="UCL")
 
         # The limits indicator for +2s, +1s.
         if super().limits:
@@ -223,22 +227,22 @@ class XbarmRControlChart(ControlChart):
             stages.append(self.number_of_sample)
 
         # Initialize the arrays of X bar (MR method).
-        self.cl_Xmr = np.zeros(((self.number_of_sample -1), 1))
-        self.ucl_Xmr = np.zeros(((self.number_of_sample -1), 1))
-        self.lcl_Xmr = np.zeros(((self.number_of_sample -1), 1))
-        self.two_sigma_plus_Xmr = np.zeros(((self.number_of_sample -1), 1))
-        self.one_sigma_plus_Xmr = np.zeros(((self.number_of_sample -1), 1))
-        self.two_sigma_min_Xmr = np.zeros(((self.number_of_sample) -1, 1))
-        self.one_sigma_min_Xmr = np.zeros(((self.number_of_sample -1), 1))
+        self.cl_Xmr = np.zeros(((self.number_of_sample), 1))
+        self.ucl_Xmr = np.zeros(((self.number_of_sample), 1))
+        self.lcl_Xmr = np.zeros(((self.number_of_sample), 1))
+        self.two_sigma_plus_Xmr = np.zeros(((self.number_of_sample), 1))
+        self.one_sigma_plus_Xmr = np.zeros(((self.number_of_sample), 1))
+        self.two_sigma_min_Xmr = np.zeros(((self.number_of_sample), 1))
+        self.one_sigma_min_Xmr = np.zeros(((self.number_of_sample), 1))
 
         # Initialize the arrays of R (MR method).
-        self.cl_Rmr = np.zeros(((self.number_of_sample -1), 1))
-        self.ucl_Rmr = np.zeros(((self.number_of_sample -1), 1))
-        self.lcl_Rmr = np.zeros(((self.number_of_sample -1), 1))
-        self.two_sigma_plus_Rmr = np.zeros(((self.number_of_sample -1), 1))
-        self.one_sigma_plus_Rmr = np.zeros(((self.number_of_sample -1), 1))
-        self.two_sigma_min_Rmr = np.zeros(((self.number_of_sample -1), 1))
-        self.one_sigma_min_Rmr = np.zeros(((self.number_of_sample -1), 1))
+        self.cl_Rmr = np.zeros(((self.number_of_sample), 1))
+        self.ucl_Rmr = np.zeros(((self.number_of_sample), 1))
+        self.lcl_Rmr = np.zeros(((self.number_of_sample), 1))
+        self.two_sigma_plus_Rmr = np.zeros(((self.number_of_sample), 1))
+        self.one_sigma_plus_Rmr = np.zeros(((self.number_of_sample), 1))
+        self.two_sigma_min_Rmr = np.zeros(((self.number_of_sample), 1))
+        self.one_sigma_min_Rmr = np.zeros(((self.number_of_sample), 1))
 
         # Initialize the sample averages.
         self._sample_average = np.zeros(((self.number_of_sample), 1))
@@ -276,9 +280,6 @@ class XbarmRControlChart(ControlChart):
             end_index_mR = i
             end_index_Rmr = i
 
-            print(f'start_index_mR={start_index_mR}, end_index_mR={end_index_mR}')
-            print(f'start_index_Rmr={start_index_Rmr}, end_index_Rmr={end_index_Rmr}')
-
             # Calculate the UCL, CL, LCL of X bar (MR method).
             self.cl_Xmr[start_index_mR:end_index_mR] = self._sample_average[start_index_mR:end_index_mR].mean()
             self.ucl_Xmr[start_index_mR:end_index_mR] = self._sample_average[start_index_mR:end_index_mR].mean() + 2.66 * self._value_mR_average[start_index_mR:end_index_mR].mean()
@@ -311,22 +312,22 @@ class XbarmRControlChart(ControlChart):
             :param index: The index for the data (0 = X chart, 1 = mR chart)
         """
         if index == 0: # X chart.
-            df = pd.DataFrame(np.column_stack([self._value_mR_average, self.ucl_Xmr, self.two_sigma_plus_Xmr, self.one_sigma_plus_Xmr, self.cl_Xmr, self.one_sigma_min_Xmr, self.two_sigma_min_Xmr, self.lcl_Xmr]), columns=['value', 'UCL', '+2s', '+1s', 'CL', '-1s', '-2s', 'LCL'])
+            df = pd.DataFrame(np.column_stack([self._sample_average, self.ucl_Xmr, self.two_sigma_plus_Xmr, self.one_sigma_plus_Xmr, self.cl_Xmr, self.one_sigma_min_Xmr, self.two_sigma_min_Xmr, self.lcl_Xmr]), columns=['value', 'UCL', '+2s', '+1s', 'CL', '-1s', '-2s', 'LCL'])
             self.execute_rules(df)
 
             # Check numerical or datetime for the x-axis.
             if (len(super().dates) != 0):
-                df['date'] = super().dates[1:]
+                df['date'] = super().dates
                 df=df.set_index('date')
 
             return df
         if index == 1: # mR chart.
-            df = pd.DataFrame(np.column_stack([self._value_mR, self.ucl_Rmr, self.two_sigma_plus_Rmr, self.one_sigma_plus_Rmr, self.cl_Rmr, self.one_sigma_min_Rmr, self.two_sigma_min_Rmr, self.lcl_Rmr]), columns=['value', 'UCL', '+2s', '+1s', 'CL', '-1s', '-2s', 'LCL'])
+            df = pd.DataFrame(np.column_stack([self._range, self.ucl_Rmr, self.two_sigma_plus_Rmr, self.one_sigma_plus_Rmr, self.cl_Rmr, self.one_sigma_min_Rmr, self.two_sigma_min_Rmr, self.lcl_Rmr]), columns=['value', 'UCL', '+2s', '+1s', 'CL', '-1s', '-2s', 'LCL'])
             self.execute_rules(df)
 
             # Check numerical or datetime for the x-axis.
             if (len(super().dates) != 0):
-                df['date'] = super().dates[1:]
+                df['date'] = super().dates
                 df=df.set_index('date')
 
             return df
